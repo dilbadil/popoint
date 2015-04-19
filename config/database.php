@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => env('DB_DEFAULT', 'mysql'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
 		],
 
 		'mysql' => [
-			'driver'    => 'mysql',
+			'driver'    => env('DB_DRIVER', 'mysql'),
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'forge'),
 			'username'  => env('DB_USERNAME', 'forge'),
