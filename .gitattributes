@@ -1,0 +1,7 @@
+* text=auto
+*.css linguist-vendored
+*.less linguist-vendored
+vendor/
+bower_components/
+node_moodules/
+.env
