@@ -12,5 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+
+    // Browserify
+    mix.browserify('main.js', null, 'resources/js');
+
+    // Less
     mix.less('app.less');
+    mix.less('app-material.less', null, './');
+
 });
