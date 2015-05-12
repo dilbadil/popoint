@@ -18,6 +18,6 @@ elixir(function(mix) {
 
     // Less
     mix.less('app.less');
-    mix.less('app-material.less', null, './');
+    mix.less(['app-material.less'], null, './');
 
 });
