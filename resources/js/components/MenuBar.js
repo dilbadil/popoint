@@ -46,8 +46,7 @@ var MenuBar = React.createClass({
     render: function() {
         return (
             <Toolbar>
-                    <GroupLeft filterOptions={this.props.filterOptions}></GroupLeft>
-
+                <FlatButton label="Default" />
             </Toolbar>
         );
     }

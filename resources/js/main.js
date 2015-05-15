@@ -1,6 +1,6 @@
-var ngreact                 = require('ngreact'),
+var angular                 = require('angular'),
     React                   = require('react'),
-    angular                 = require('angular'),
+    ngreact                 = require('ngreact'),
     injectTapEventPlugin    = require("react-tap-event-plugin")
     ;
 
