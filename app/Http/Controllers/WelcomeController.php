@@ -33,10 +33,4 @@ class WelcomeController extends Controller {
 		return view('welcome');
 	}
 
-    // Just test
-    public function test()
-    {
-        return view('test');
-    }
-
 }

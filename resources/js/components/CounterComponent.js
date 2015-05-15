@@ -1,4 +1,8 @@
 import React from 'react';
+import mui from 'material-ui';
+
+var RaisedButton = mui.RaisedButton;
+var IconButton = mui.IconButton;
 
 var CounterComponent = React.createClass({
 
@@ -15,9 +19,10 @@ var CounterComponent = React.createClass({
     },
 
     componentDidMount: function() {
-        // setInterVal(function() {
+
+        setInterval(function() {
             this.tick();
-        // }.bind(this), 1000);
+        }.bind(this), 1000);
     },
 
     tick: function() {
@@ -28,10 +33,12 @@ var CounterComponent = React.createClass({
 
     render: function() {
         return (
-            <h1>Count {this.state.count}</h1>
-            );
+            <h1>
+                <RaisedButton label={this.state.count} />
+                <IconButton iconClassName="fa fa-github" tooltip="GitHub" />
+            </h1>
+        );
     }
-
 });
 
 export default CounterComponent;
