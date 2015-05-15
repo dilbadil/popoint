@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/test', 'WelcomeController@test');
 
 Route::get('home', 'HomeController@index');
 
@@ -19,6 +20,3 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('dashboard', 'Admins\DashboardController@index');
-Route::get('control-panel', 'ControlPanels\ControlPanelController@index');
