@@ -8,10 +8,8 @@
 	</head>
 	<body>
 		<div class="container">
-            <div ng-controller="CounterController">
+            <div ng-controller="MenubarController">
                 <react-component props="{count: 9}" name="MenubarComponent"></react-component>
-
-                <react-component props="{count: 9}" name="CounterComponent"></react-component>
             </div>
             
             <script src="/js/bundle.js"></script>

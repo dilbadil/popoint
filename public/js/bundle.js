@@ -3,16 +3,15 @@
 
 var angular = require('angular');
 var ngreact = require('ngreact');
-var CounterComponent = require('./components/CounterComponent');
 var MenubarComponent = require('./components/MenubarComponent');
-var CounterController = require('./controllers/CounterController');
+var MenubarController = require('./controllers/MenubarController');
 var injectTapEventPlugin = require('react-tap-event-plugin');
 
 injectTapEventPlugin();
 
-angular.module('app', ['react']).value('CounterComponent', CounterComponent).value('MenubarComponent', MenubarComponent).controller('CounterController', CounterController);
+angular.module('app', ['react']).value('MenubarComponent', MenubarComponent).controller('MenubarController', MenubarController);
 
-},{"./components/CounterComponent":252,"./components/MenubarComponent":253,"./controllers/CounterController":254,"angular":3,"ngreact":74,"react-tap-event-plugin":78}],2:[function(require,module,exports){
+},{"./components/MenubarComponent":252,"./controllers/MenubarController":253,"angular":3,"ngreact":74,"react-tap-event-plugin":78}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -54928,73 +54927,15 @@ var _materialUi = require('material-ui');
 
 var _materialUi2 = _interopRequireDefault(_materialUi);
 
-var RaisedButton = _materialUi2['default'].RaisedButton;
-var IconButton = _materialUi2['default'].IconButton;
-
-var CounterComponent = _react2['default'].createClass({
-    displayName: 'CounterComponent',
-
-    getDefaultProps: function getDefaultProps() {
-        return {
-            count: 0
-        };
-    },
-
-    getInitialState: function getInitialState() {
-        return {
-            count: this.props.count
-        };
-    },
-
-    componentDidMount: function componentDidMount() {
-
-        setInterval((function () {
-            this.tick();
-        }).bind(this), 1000);
-    },
-
-    tick: function tick() {
-        var count = this.state.count + 1;
-
-        this.setState({ count: count });
-    },
-
-    render: function render() {
-        return _react2['default'].createElement(
-            'h1',
-            null,
-            _react2['default'].createElement(RaisedButton, { label: this.state.count }),
-            _react2['default'].createElement(IconButton, { iconClassName: 'fa fa-github', tooltip: 'GitHub' })
-        );
-    }
-});
-
-exports['default'] = CounterComponent;
-module.exports = exports['default'];
-
-},{"material-ui":5,"react":251}],253:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _materialUi = require('material-ui');
-
-var _materialUi2 = _interopRequireDefault(_materialUi);
-
 var Toolbar = _materialUi2['default'].Toolbar,
     ToolbarGroup = _materialUi2['default'].ToolbarGroup,
     DropDownMenu = _materialUi2['default'].DropDownMenu,
     DropDownIcon = _materialUi2['default'].DropDownIcon,
     FontIcon = _materialUi2['default'].FontIcon,
-    RaisedButton = _materialUi2['default'].RaisedButton;
+    RaisedButton = _materialUi2['default'].RaisedButton,
+    LeftNav = _materialUi2['default'].LeftNav;
+
+var menuItems = [{ route: 'get-started', text: 'Get Started' }, { route: 'css-framework', text: 'Css Framework' }, { route: 'components', text: 'Components' }, { type: 'components', text: 'Components' }];
 
 var filterOptions = [{ payload: '1', text: 'All Broadcasts' }, { payload: '2', text: 'All Voice' }, { payload: '3', text: 'All Text' }, { payload: '4', text: 'Complete Voice' }, { payload: '5', text: 'Complete Text' }, { payload: '6', text: 'Active Voice' }, { payload: '7', text: 'Active Text' }];
 
@@ -55002,6 +54943,10 @@ var iconMenuItems = [{ payload: '1', text: 'Download' }, { payload: '2', text: '
 
 var MenubarComponent = _react2['default'].createClass({
     displayName: 'MenubarComponent',
+
+    showLeftNav: function showLeftNav() {
+        this.refs.leftNav.toggle();
+    },
 
     render: function render() {
         return _react2['default'].createElement(
@@ -55015,7 +54960,7 @@ var MenubarComponent = _react2['default'].createClass({
             _react2['default'].createElement(
                 ToolbarGroup,
                 { key: 1, float: 'right' },
-                _react2['default'].createElement(FontIcon, { className: 'fa fa-plane' }),
+                _react2['default'].createElement(FontIcon, { ref: 'ok', className: 'fa fa-plane' }),
                 _react2['default'].createElement(FontIcon, { className: 'fa fa-heart' }),
                 _react2['default'].createElement(DropDownIcon, { iconClassName: 'fa fa-check', menuItems: iconMenuItems }),
                 _react2['default'].createElement(
@@ -55023,7 +54968,8 @@ var MenubarComponent = _react2['default'].createClass({
                     { className: 'mui-toolbar-separator' },
                     ' '
                 ),
-                _react2['default'].createElement(RaisedButton, { label: 'Create Broadcast', primary: true })
+                _react2['default'].createElement(RaisedButton, { onClick: this.showLeftNav, label: 'Create Broadcast', primary: true }),
+                _react2['default'].createElement(LeftNav, { ref: 'leftNav', docked: false, menuItems: menuItems })
             )
         );
     }
@@ -55033,17 +54979,32 @@ var MenubarComponent = _react2['default'].createClass({
 exports['default'] = MenubarComponent;
 module.exports = exports['default'];
 
-},{"material-ui":5,"react":251}],254:[function(require,module,exports){
-"use strict";
+},{"material-ui":5,"react":251}],253:[function(require,module,exports){
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+    value: true
 });
-CounterController.$inject = [];
 
-function CounterController() {}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-exports["default"] = CounterController;
-module.exports = exports["default"];
+var _materialUi = require('material-ui');
 
-},{}]},{},[1]);
+var _materialUi2 = _interopRequireDefault(_materialUi);
+
+MenubarController.$inject = [];
+
+function MenubarController() {
+    var vm = this;
+
+    vm.menuItems = [{ route: 'get-started', text: 'Get Started' }, { route: 'css-framework', text: 'Css Framework' }, { route: 'components', text: 'Components' }, { type: 'components', text: 'Components' }];
+
+    vm.toggleLeftNav = function () {
+        _materialUi2['default'].LeftNav.toggle();
+    };
+}
+
+exports['default'] = MenubarController;
+module.exports = exports['default'];
+
+},{"material-ui":5}]},{},[1]);
